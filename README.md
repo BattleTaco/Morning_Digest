@@ -2,7 +2,7 @@
 
 Automated morning briefing that gets delivered straight to my Discord DMs every day. I built this because I was tired of manually checking arXiv, scrolling through AI Twitter, and losing track of papers that were actually relevant to my work. Now I wake up and it's just there.
 
-The whole thing runs headlessly through a Claude Code routine on Anthropic's cloud — no local machine needs to be on, no cron jobs on my laptop, nothing.
+The whole thing runs headlessly through a Claude Code routine on Anthropic's cloud.
 
 ## What it sends me
 

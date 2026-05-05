@@ -16,23 +16,6 @@ def get_env_or_fail(name: str) -> str:
     return value
 
 
-def open_dm_channel(token: str, user_id: str) -> str:
-    headers = {
-        "Authorization": f"Bot {token}",
-        "Content-Type": "application/json",
-    }
-    payload = {"recipient_id": user_id}
-
-    with httpx.Client() as client:
-        resp = client.post(f"{DISCORD_API_BASE}/users/@me/channels", headers=headers, json=payload)
-
-    if resp.status_code != 200:
-        print(f"ERROR: Failed to open DM channel. Status {resp.status_code}: {resp.text}", file=sys.stderr)
-        sys.exit(1)
-
-    return resp.json()["id"]
-
-
 def send_message(token: str, channel_id: str, content: str, section_label: str) -> None:
     headers = {
         "Authorization": f"Bot {token}",
@@ -52,7 +35,7 @@ def send_message(token: str, channel_id: str, content: str, section_label: str) 
 
 def main():
     token = get_env_or_fail("DISCORD_BOT_TOKEN")
-    user_id = get_env_or_fail("DISCORD_USER_ID")
+    channel_id = get_env_or_fail("DISCORD_CHANNEL_ID")
 
     raw = sys.stdin.read().strip()
     if not raw:
@@ -79,8 +62,7 @@ def main():
         "Daily Challenge",
     ]
 
-    channel_id = open_dm_channel(token, user_id)
-    print(f"DM channel opened: {channel_id}")
+    print(f"Sending to channel: {channel_id}")
 
     for i, section in enumerate(sections):
         label = section_labels[i] if i < len(section_labels) else f"Section {i + 1}"

@@ -68,7 +68,8 @@ Your job: produce a daily digest split into exactly 7 discrete sections. Each se
 TONE: Sharp, technical, direct. Written for someone who reads papers daily. No fluff, no filler sentences, no "exciting" or "groundbreaking" hedging.
 
 FORMAT RULES:
-- Use Discord markdown: **bold** for headers, <url> for links (angle brackets so Discord doesn't embed previews)
+- Use Discord markdown: **bold** for headers
+- Links MUST be full URLs with https:// wrapped in angle brackets, e.g. <https://arxiv.org/abs/2505.12345> — never omit https://
 - Each section after the header starts with a divider line: ─────────────────────────────
 
 {history_block}
@@ -96,7 +97,7 @@ Search arXiv for a recent (last 7 days) computer vision paper. Format:
 ─────────────────────────────
 **[CV]** <paper title>
 <authors> · <institution>
-arXiv: <arXiv ID> · <link>
+arXiv: <arXiv ID> · <https://arxiv.org/abs/XXXX.XXXXX>
 
 **Status quo:** <what problem existed before this paper — one line>
 **How it works:** <the core method in 1-2 lines>
